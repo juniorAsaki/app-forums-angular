@@ -1,0 +1,36 @@
+<nav class="navbar sticky-top bg-dark mt-3 navbar-light p-3" style="border-radius: 15px" >
+  <h1 class="text-light">Titre du sujet</h1>
+  <p class="text-light">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus ducimus minus numquam officia ullam! Atque eaque earum illo inventore modi! Ab consequatur dolorum eligendi explicabo harum laboriosam nobis sequi soluta!
+  </p>
+  <form [formGroup]="formGroup" (ngSubmit)="handleSaveMessage()" class="w-100">
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+        <textarea formControlName="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary mb-3">Ajouter un message</button>
+      </div>
+    </div>
+  </form>
+</nav>
+<div class="container mt-5 mb-3">
+  <div class="row">
+    @for (message of listMessage(); track message){
+      <div class="col-lg-12 mb-4 w-100">
+        <div class="card" >
+          <div class="card-body d-flex justify-content-between">
+            <div>
+              <p class="card-text">Message sur le sujet : <br><br>
+                {{message.content}}</p>
+              <p>{{message.createdDate}}</p>
+            </div>
+            <a href="" class="btn btn-danger" style="width: 50px;height: 50px">X</a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

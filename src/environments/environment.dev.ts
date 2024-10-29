@@ -3,20 +3,16 @@ export const environment = {
   baseUrl: 'http://localhost:8080',
   endPoint: {
     forums: {
-      getAll: "api/forums",
-      getOne: "api/forums",
-      create: "api/forums",
-      update: "api/forums",
-      delete: "api/forums"
+      allHttpRequest: "api/forums",
     },
     subject: {
-      create: "api/sujets",
-      getSubjectByForm: "api/sujets/forum",
-      getOne: "api/sujets"
+      allHttpRequest: "api/sujets",
+      getSubjectsByForm: "api/sujets/forum",
     },
     message: {
-      create: "api/message",
-      getSubjectBySubject: "api/message/subject",
-    }
+      allHttpRequest: "api/message",
+      getMessagesBySubject: "api/message/subject",
+    },
+    login: "/auth/login"
   }
 }

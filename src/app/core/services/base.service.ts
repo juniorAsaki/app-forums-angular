@@ -28,7 +28,7 @@ export class BaseService {
     return this.httpClient.get(url);
   }
 
-  getAllSubjectByForum(endPoint: string , id: string): Observable<any>{
+  getAllSubjectByForum(endPoint: string , id: any): Observable<any>{
     const url = `${this.baseUrl}/${endPoint}/${id}`;
     return this.httpClient.get(url);
   }

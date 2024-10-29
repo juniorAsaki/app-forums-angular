@@ -3,20 +3,40 @@
     <div class="card-header">
       <h2>Ajouter un Message</h2>
     </div>
-    <div class="card-body">
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <form [formGroup]="formGroup" (ngSubmit)="handleSave()">
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="content"></textarea>
+        </div>
+        <select class="form-select mb-3"  formControlName="idSubject">
+          @for ( sujet of listSubject(); track sujet){
+            <option [value]="sujet.idSubject">{{sujet.title}}</option>
+          }
+        </select>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary mb-3">Enregistrer un message</button>
+        </div>
       </div>
-      <select class="form-select mb-3" aria-label="Default select example">
-        <option selected>Selection le sujet</option>
-        <option value="1">Sujet JAVA</option>
-        <option value="2">Sujet PYTHON</option>
-        <option value="3">Sujet PHP</option>
-      </select>
-      <div class="mb-3">
-        <button type="submit" class="btn btn-primary mb-3">Enregistrer un message</button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>
+<table id="example" class="table table-striped mt-5" style="width:100%">
+  <thead>
+  <tr>
+    <th>SLUG</th>
+    <th>Content Message</th>
+    <th>Date de creation</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for ( message of listMessages(); track message){
+      <tr>
+        <td>{{message.slug}}</td>
+        <td>{{message.content}}</td>
+        <td>{{message.createdDate}}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+

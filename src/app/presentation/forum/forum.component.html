@@ -7,14 +7,29 @@
       <div class="card-body">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Title</label>
-          <input formControlName="title" type="email" class="form-control py-3" id="exampleFormControlInput1" placeholder="title">
+          <input [class.is-invalid]="isInvalidaedInput(formGroup.controls['title'])" formControlName="title" type="email" class="form-control py-3" id="exampleFormControlInput1" placeholder="title">
+         <!--- @if (isInvalidaedInput(formGroup.controls['title'])){
+            <small class="text-danger">
+              name is required
+            </small>
+          } --->
+          @if(formGroup.controls['title'].hasError('minlength')) {
+            <small class="text-danger">
+              name  plus de 4 caracteres
+            </small>
+          }
         </div>
         <div class="mb-3">
           <label for="exampleFormControlInput2" class="form-label">Description</label>
-          <input formControlName="description" type="email" class="form-control py-3" id="exampleFormControlInput2" placeholder="description">
+          <input  [class.is-invalid]="isInvalidaedInput(formGroup.controls['description'])" formControlName="description" type="email" class="form-control py-3" id="exampleFormControlInput2" placeholder="description">
+          @if (isInvalidaedInput(formGroup.controls['description'])){
+            <small class="text-danger">
+              description is required
+            </small>
+          }
         </div>
         <div class="mb-3">
-          <button type="submit" class="btn btn-primary mb-3">Enregistrer un forums</button>
+          <button [ngClass]="!formGroup.valid ? 'disabled':''" type="submit" class="btn btn-primary mb-3">Enregistrer un forums</button>
         </div>
       </div>
     </form>
@@ -23,16 +38,19 @@
 <table id="example" class="table table-striped mt-5" style="width:100%">
   <thead>
   <tr>
-    <th>ID</th>
+    <th>SLUG</th>
     <th>Title</th>
     <th>Description</th>
+    <th>Date de creation<th>
   </tr>
   </thead>
   <tbody>
-    @for ( forum of forumsList; track forum.title){
+    @for ( forum of forumsList(); track forum){
       <tr>
+        <td>{{forum.slug}}</td>
         <td>{{forum.title}}</td>
         <td>{{forum.description}}</td>
+        <td>{{forum.createdDate}}</td>
       </tr>
     }
   </tbody>

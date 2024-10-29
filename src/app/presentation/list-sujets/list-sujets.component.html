@@ -1,0 +1,21 @@
+<nav  class="navbar bg-dark mt-3 navbar-light p-3 d-flex flex-column" style="border-radius: 15px" >
+  <h1 class="text-light">Titre du forum</h1>
+  <p class="text-light">
+    description du forum
+  </p>
+</nav>
+<div class="container mt-5 mb-3">
+  <div class="row gap-2">
+    @for (sujet of listSujet(); track sujet){
+      <div class="col-md-3 mb-4 ">
+        <div class="card" style="width: 18rem;height: 10rem">
+          <div class="card-body">
+            <h5 class="card-title">{{ sujet.title }}</h5>
+            <p class="card-text">{{sujet.description}}</p>
+            <a (click)="handleGoToMessage(sujet.idSubject)" class="btn btn-primary">Voir les messages</a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container mt-5 mb-3">
+  <div class="row ">
+    @for (forum of listForum(); track forum){
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+        <div class="card" style="width: 18rem;height: 15rem">
+     <!--     <img src="/img/gummy-farming.svg" class="card-img-top" style="width: 100%;height: 150px;object-fit: cover" alt="forum pic"> -->
+          <div class="card-body">
+            <h5 class="card-title">{{forum.title}}</h5>
+            <p class="card-text">{{forum.description}}</p>
+            <p class="card-text">{{forum.createdDate}}</p>
+            <a (click)="handleGoToSubject(forum.idForum)" class="btn btn-primary">Voir les sujets</a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
